@@ -25,7 +25,7 @@ jobs:
 
       # Restore dependencies
       - name: Restore dependencies
-        run: nuget restore demo1.sln
+        run: dotnet restore demo1.sln
 
       # Build the project
       - name: Build the project
