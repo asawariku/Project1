@@ -23,6 +23,12 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
+        # Set up .NET SDK again if needed (since jobs are isolated)
+      - name: Set up .NET SDK
+        uses: actions/setup-dotnet@v3
+        with:
+          sdk-version: '5.0.x'  # Specify the .NET SDK version
+
       # Restore dependencies
       - name: Restore dependencies
         run: dotnet restore demo1.sln
