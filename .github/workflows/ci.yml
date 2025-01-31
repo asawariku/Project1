@@ -1,0 +1,38 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches:
+      - main
+      - develop  # You can add other branches here
+  pull_request:
+    branches:
+      - main  # Trigger on pull request to the main branch
+  schedule:
+    - cron: '0 0 * * *'  # Trigger every day at midnight UTC (you can adjust the cron schedule)
+
+jobs:
+  build:
+    runs-on: windows-latest  # Specify the operating system for the runner
+
+    # Job-level condition: Only run on the 'main' and 'develop' branches
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop'
+
+    steps:
+      # Checkout code
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Set up .NET SDK
+      - name: Set up .NET SDK
+        uses: actions/setup-dotnet@v3
+        with:
+          sdk-version: '5.0.x'  # Specify the .NET SDK version
+
+      # Restore dependencies
+      - name: Restore dependencies
+        run: nuget restore demo1.sln
+
+      # Build the project
+      - name: Build the project
+        run: dotnet build demo1.sln
