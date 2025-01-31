@@ -13,7 +13,7 @@ on:
 
 jobs:
   build:
-    runs-on: windows-latest  # Specify the operating system for the runner
+    runs-on: demoagent  # Specify the operating system for the runner
 
     # Job-level condition: Only run on the 'main' and 'develop' branches
     if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop'
