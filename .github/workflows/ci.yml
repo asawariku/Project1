@@ -9,7 +9,7 @@ on:
     branches:
       - main  # Trigger on pull request to the main branch
   schedule:
-    - cron: '0 0 * * *'  # Trigger every day at midnight UTC (you can adjust the cron schedule)
+   # - cron: '0 0 * * *'  # Trigger every day at midnight UTC (you can adjust the cron schedule)
 
 jobs:
   build:
